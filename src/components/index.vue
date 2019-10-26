@@ -10,25 +10,42 @@
           </li>
         </ul>
       </div>
+     <router-link :to="{ name:'edit', params:{ slugName : smothie.slug } }">
+      <span class="btn-floating btn-large halfway-fab pink"> 
+          <li class="material-icons edit" style="color:white;margin-top:16px;">edit</li>
+        </span>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
+import db from '@/firebase/init'
+
 export default {
   name: 'index',
   data () {
     return {
-      smothies:[
-        {title:'ninja Brew', slug:'ninja-brew', ingredients:['bananas', 'coffee','milk'], id:'1'},
-        {title:'Morning Mood', slug:'morning-mood', ingredients:['mango', 'line','juice'], id:'2'},
-      ]
+      smothies:[]
     }
+  },
+  created(){
+    db.collection('smoothies').get()
+    .then( res => {
+      res.forEach( doc => {
+        let smothie = doc.data()
+        smothie.id = doc.id
+        this.smothies.push(smothie)
+      })
+    })
   },
   methods:{
     deleteSmothie(id){
-      this.smothies = this.smothies.filter( smothie => {
-        return smothie.id != id
+      db.collection('smoothies').doc(id).delete()
+      .then( () => {
+        this.smothies = this.smothies.filter( smothie => {
+          return smothie.id != id
+        })
       })
     },
   }

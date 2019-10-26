@@ -2,14 +2,12 @@
 	<div class="navbar">
 		<nav class="nav-extended indigo darken-2">
 			<div class="nav-content">
-				<router-link to="">
-					<span class="nav-title">Ninja Practice</span>
+				<router-link :to="{name: 'index'}">
+					<span class="nav-title">Gym Practice</span>
 				</router-link>
-				<a href="" class="btn-floating btn-large halfway-fab pink">
-					<router-link to="">
+				<router-link :to="{name:'add'}" class="btn-floating btn-large halfway-fab pink">
 						<li class="material-icons" style="margin-top:16px;">add</li>
-					</router-link>
-				</a>
+				</router-link>
 			</div>
 		</nav>
 	</div>
