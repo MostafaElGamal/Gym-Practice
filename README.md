@@ -1,4 +1,4 @@
-# ninja-practice
+# Gym-Practice
 
 > A Vue.js project
 
