@@ -11,7 +11,7 @@
         </ul>
       </div>
      <router-link :to="{ name:'edit', params:{ slugName : smothie.slug } }">
-      <span class="btn-floating btn-large halfway-fab pink"> 
+      <span class="btn-floating btn-large halfway-fab  pink darken-1"> 
           <li class="material-icons edit" style="color:white;margin-top:16px;">edit</li>
         </span>
       </router-link>
